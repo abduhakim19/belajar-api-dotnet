@@ -1,6 +1,10 @@
+using API.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
-var connectionString = 
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<BookingManagementDbContext>(option => option.UseSqlServer(connectionString));
 
 
 // Add services to the container.
